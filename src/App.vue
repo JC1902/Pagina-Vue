@@ -24,8 +24,12 @@
     </v-navigation-drawer>
 
     <v-app-bar color="indigo" dark fixes app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"><v-icon>menu</v-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"><v-icon>menu</v-icon></v-app-bar-nav-icon>
       <v-app-bar-title>Inicio</v-app-bar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn v-bind:to="{name: 'AgregarPelicula'}">Agregar Película</v-btn>
+      </v-toolbar-items>
     </v-app-bar>
 
     <v-main>
@@ -48,7 +52,7 @@ import './assets/stylesheets/main.css';
 
 export default {
   data: () => ({
-    drawer: false,
+    drawer: null,
   }),
   props: {
     source: String,

@@ -42,7 +42,7 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -63,7 +63,7 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -84,7 +84,7 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -108,7 +108,7 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -129,7 +129,7 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
@@ -150,10 +150,23 @@ export default {
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat color="purple">Calificar esta película</v-btn>
+          <v-btn text color="purple">Calificar esta película</v-btn>
           <v-spacer></v-spacer>
         </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
+
+<script>
+import '../assets/stylesheets/main.css';
+
+export default {
+  data: () => ({
+    drawer: null,
+  }),
+  props: {
+    source: String,
+  },
+};
+</script>
