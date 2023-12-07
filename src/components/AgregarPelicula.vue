@@ -30,6 +30,8 @@
 
 
 <script>
+import axios from 'axios';
+
 export default {
   data: () => ({
     valido: true,
@@ -55,7 +57,29 @@ export default {
     guardar() {
       if (this.$refs.formulario.validate()) {
         // Realizar siguiente acción
+        return axios({
+          method: 'post',
+          data: {
+            nombre: this.nombre,
+            sinopsis: this.sinopsis,
+            anhopub: this.anhopub,
+            genero: this.genero,
+          },
+          url: 'http://localhost:8081/peliculas',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then(() => {
+            this.$router.push({ name: 'Inicio' });
+            this.$refs.formulario.reset();
+          })
+          .catch(() => {
+
+          });
       }
+
+      return true;
     },
     limpiar() {
       this.$refs.formulario.reset();

@@ -89,7 +89,6 @@ export default {
         </v-card-actions>
       </v-card>
     </v-flex>
-    <v-spacer></v-spacer>
     <v-flex xs4>
       <v-card>
         <v-card-title primary-title>

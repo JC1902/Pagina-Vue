@@ -40,7 +40,7 @@
       </v-container>
     </v-main>
 
-    <v-footer color="inidigo" app>
+    <v-footer color="indigo" app>
       <span class="white--text">&copy; 2023</span>
     </v-footer>
 
