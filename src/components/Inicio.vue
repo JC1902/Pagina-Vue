@@ -22,7 +22,7 @@ export default {
   },
 };
 </script> -->
-<template>
+<!-- <template>
   <v-layout row wrap>
     <v-flex xs4>
       <v-card>
@@ -155,17 +155,52 @@ export default {
       </v-card>
     </v-flex>
   </v-layout>
+</template> -->
+
+<template>
+  <v-layout row wrap>
+    <v-flex xs4 v-for="pelicula in peliculas" :key="pelicula._id">
+      <v-card>
+        <v-card-title primary-title>
+          <div>
+            <div class="headline">{{ pelicula.nombre }}</div>
+            <span class="gray--text">{{ pelicula.anhopub }} &middot; {{ pelicula.genero }}</span>
+          </div>
+        </v-card-title>
+        <v-card-text>
+          {{ pelicula.sinopsis }}
+        </v-card-text>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
+import axios from 'axios';
 import '../assets/stylesheets/main.css';
 
 export default {
-  data: () => ({
-    drawer: null,
-  }),
-  props: {
-    source: String,
+  name: 'Peliculas',
+  data() {
+    return {
+      peliculas: [],
+    };
+  },
+  mounted() {
+    this.obtenerPeliculas();
+  },
+  methods: {
+    async obtenerPeliculas() {
+      return axios({
+        method: 'get',
+        url: 'http://localhost:8081/peliculas',
+      })
+        .then((respuesta) => {
+          this.peliculas = respuesta.data;
+        })
+        .catch(() => {
+        });
+    },
   },
 };
 </script>

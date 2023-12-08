@@ -18,4 +18,17 @@ module.exports.controller = (app) => {
             res.send(pelicula);
         });
     });
+
+    // Obtener todas las peliculas
+    app.get('/peliculas', (req, res) => {
+        EsquemaPelicula.find({}, 'nombre sinopsis anhopub genero')
+        .then((error, peliculas) => {
+            if (error) { 
+                console.log(error);
+                res.send(error);
+            } else {
+                res.send(peliculas);
+            }
+        });
+    });
 };

@@ -19,7 +19,6 @@
             <v-list-item-content>Contacto</v-list-item-content>
           </v-list-item>
         </router-link>
-
         </v-list>
     </v-navigation-drawer>
 

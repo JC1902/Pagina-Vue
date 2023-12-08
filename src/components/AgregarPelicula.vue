@@ -14,11 +14,15 @@
         <v-select
             label="Año de publicación:"
             v-model="anhopub"
+            required
+            :rules="reglasPublicacion"
             :items="anhos"
         ></v-select>
         <v-text-field
             label="Género:"
             v-model="genero"
+            required
+            :rules="reglasGenero"
         ></v-text-field>
         <v-btn
             @click="guardar"
@@ -41,6 +45,13 @@ export default {
     anhopub: '',
     reglasNombre: [
       v => !!v || 'La película es requerida',
+    ],
+    reglasGenero: [
+      v => !!v || 'Género de película requerido',
+      v => (v && v.length <= 80) || 'Género debe ser menor o igual a 80 caracteres',
+    ],
+    reglasPublicacion: [
+      v => !!v || 'Año de publicación es requerido',
     ],
     select: null,
     anhos: [
@@ -71,11 +82,20 @@ export default {
           },
         })
           .then(() => {
+            this.$swal(
+              '¡Grandioso!',
+              'Película guardada satisfactoriamente',
+              'success',
+            );
             this.$router.push({ name: 'Inicio' });
             this.$refs.formulario.reset();
           })
           .catch(() => {
-
+            this.$swal(
+              '¡¡Oh no!!',
+              'Ocurrió un error y no pudimos agregar la película',
+              'error',
+            );
           });
       }
 
