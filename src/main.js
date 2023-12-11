@@ -3,7 +3,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'vuetify/dist/vuetify.min.css';
 import BootstrapVue from 'bootstrap-vue';
 
 import Vue from 'vue';

@@ -23,7 +23,9 @@
     </v-navigation-drawer>
 
     <v-app-bar color="indigo" dark fixes app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"><v-icon>menu</v-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+        <v-icon>{{drawer ? 'close' : 'menu'}}</v-icon>
+      </v-app-bar-nav-icon>
       <v-app-bar-title>Inicio</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">

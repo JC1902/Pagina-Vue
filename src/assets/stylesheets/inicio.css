@@ -21,7 +21,7 @@ a.side_bar_link {
 }
 
 .card__title--primary, .card__text {
-    text-align: left;
+    text-align: center;
 }
 
 .card, .flex_xs4, .v_card {

@@ -163,15 +163,26 @@ export default {
       <v-card>
         <v-card-title primary-title>
           <div>
-            <div class="headline">{{ pelicula.nombre }}</div>
+            <div class="headline">
+              <v-btn v-bind:to="`/peliculas/${pelicula._id}`">
+                {{ pelicula.nombre }}
+              </v-btn>
+            </div>
             <span class="gray--text">{{ pelicula.anhopub }} &middot; {{ pelicula.genero }}</span>
           </div>
         </v-card-title>
         <v-card-text>
           {{ pelicula.sinopsis }}
         </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn text color="purple">Calificar esta película</v-btn>
+          <v-btn @click="eliminarPelicula(pelicula._id)" text color="red">Borrar</v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
       </v-card>
     </v-flex>
+    <v-btn @click="eliminarPeliculas()" text color="red">Borrar todo</v-btn>
   </v-layout>
 </template>
 
@@ -199,6 +210,27 @@ export default {
           this.peliculas = respuesta.data;
         })
         .catch(() => {
+        });
+    },
+    async eliminarPelicula(_id) {
+      return axios({
+        method: 'delete',
+        url: `http://localhost:8081/peliculas/${_id}`,
+      })
+        .then(() => {
+          this.obtenerPeliculas();
+        })
+        .catch(() => {
+
+        });
+    },
+    async eliminarPeliculas() {
+      return axios({
+        method: 'delete',
+        url: 'http://localhost:8081/peliculas',
+      })
+        .then(() => {
+          this.obtenerPeliculas();
         });
     },
   },
