@@ -10,9 +10,9 @@
             </span>
           </div>
         </v-card-title>
-        <!-- <h6 class="card-title" v-if="current_user"
-          @click="calificar">Calificar esta película</h6> -->
-        <h6 class="card-title" @click="calificar">Calificar esta película</h6>
+        <h6 class="card-title" v-if="current_user"
+          @click="calificar">Calificar esta película</h6>
+        <!-- <h6 class="card-title" @click="calificar">Calificar esta película</h6> -->
         <v-card-text>
           {{ pelicula.sinopsis }}
         </v-card-text>

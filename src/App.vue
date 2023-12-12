@@ -19,6 +19,14 @@
             <v-list-item-content>Contacto</v-list-item-content>
           </v-list-item>
         </router-link>
+
+        <router-link v-bind:to="{name: 'Registro'}" class="side_bar_link">
+          <v-list-item>
+            <v-list-item-action>
+
+            </v-list-item-action>
+          </v-list-item>
+        </router-link>
         </v-list>
     </v-navigation-drawer>
 

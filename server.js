@@ -4,12 +4,23 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const passportJWT = require('passport-jwt');
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+const jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt');
+jwtOptions.secretOrKey = 'llavesecretaappcalificacionespeliculas';
 
 const app = express();
 const router = express.Router();
+const serveStatic = require('serve-static');
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(passport.initialize());
 
 // conexión a mongodb
 mongoose.connect('mongodb://localhost/calif_peliculas_ad2023').then( () => {
@@ -20,12 +31,15 @@ mongoose.connect('mongodb://localhost/calif_peliculas_ad2023').then( () => {
     process.exit(1);
 });
 
+// Controladores
 fs.readdirSync('controladores').forEach(function (arch) {
     if (arch.slice(-3) == '.js') {
         const route = require('./controladores/' + arch);
         route.controller(app);
     }
 });
+
+app.use(serveStatic(__dirname + '/dist'));
 
 router.get('/', function(req, res) {
     res.json({ mensaje: 'API Inicializada' });

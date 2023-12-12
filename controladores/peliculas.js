@@ -1,4 +1,6 @@
 const EsquemaPelicula = require('../modelos/Pelicula');
+const Calificacion = require('../modelos/Calificacion');
+const passport = require('passport')
 
 module.exports.controller = (app) => {
     // Agregar una pelicula 
@@ -20,7 +22,7 @@ module.exports.controller = (app) => {
     });
 
     // Obtener todas las peliculas
-    app.get('/peliculas', (req, res) => {
+    app.get('/peliculas', passport.authenticate('jwt', { session: false }), (req, res) => {
         EsquemaPelicula.find({}, 'nombre sinopsis anhopub genero')
         .then((error, peliculas) => {
             if (error) { 
